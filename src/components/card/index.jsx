@@ -3,10 +3,13 @@ import { Button } from "../button";
 import { Input } from "../input";
 import { MdEdit } from "react-icons/md";
 import { FaCheck } from "react-icons/fa6";
+import { Context } from "../context";
+import { useContext } from "react";
 
 export const Card = ({ name, price, description, image }) => {
   const [editMode, setEditMode] = useState(false);
   const [newTitle, setNewTitle] = useState(name);
+  const { fontSize } = useContext(Context);
 
   const handleEdit = (event) => {
     const newTitle = event.target.value;
@@ -25,7 +28,9 @@ export const Card = ({ name, price, description, image }) => {
       <div className="pt-6">
         <div className="flex flex-col">
           <div className="flex justify-between">
-            <h2 className="max-w-56 overflow-hidden text-justify text-lg">
+            <h2
+              className={`min-h-16 max-w-56 overflow-hidden break-words text-justify ${fontSize}`}
+            >
               {newTitle}
             </h2>
             <button className="m-2" onClick={() => setEditMode(!editMode)}>
@@ -43,6 +48,7 @@ export const Card = ({ name, price, description, image }) => {
           <input
             type="number"
             min="1"
+            max="12"
             defaultValue="1"
             className="mx-2 w-10 border"
           />

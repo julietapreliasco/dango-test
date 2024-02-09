@@ -1,11 +1,14 @@
-import { Header } from './components/header';
-import { Home } from './pages/home';
+import { ContextProvider } from "./components/context";
+import { Header } from "./components/header";
+import { Home } from "./pages/home";
 
 function App() {
   return (
     <>
-      <Header />
-      <Home />
+      <ContextProvider>
+        <Header />
+        <Home />
+      </ContextProvider>
     </>
   );
 }
