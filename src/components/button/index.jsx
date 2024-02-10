@@ -1,9 +1,10 @@
-export const Button = () => {
+export const Button = ({ handleAddToCart }) => {
   return (
-    <>
-      <button className="h-10 w-60 rounded-3xl border-gray-700 bg-light-pink">
-        Add to cart
-      </button>
-    </>
+    <button
+      className="bg-green h-10 w-40 rounded-3xl border-gray-700 text-white"
+      onClick={handleAddToCart}
+    >
+      Add to cart
+    </button>
   );
 };

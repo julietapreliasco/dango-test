@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Context } from "../context";
+import { Context } from "../../context";
 
 export const Range = () => {
   const { setFontSize } = useContext(Context);
@@ -14,24 +14,22 @@ export const Range = () => {
 
   const handleFontSizeChange = (event) => {
     const fontSizeValue = event.target.value;
-
     const { sizeClass } = sizeBreakpoints.find((bp) => fontSizeValue <= bp.max);
-
     setFontSize(sizeClass);
   };
 
   return (
-    <div className="flex h-12 flex-col rounded-b-2xl bg-light-pink px-6">
+    <div className="bg-french-gray flex h-12 flex-col items-center rounded-bl-2xl bg-opacity-85 px-6 2xl:rounded-b-2xl">
       <input
         type="range"
-        className="my-2 h-1.5 w-20 cursor-pointer appearance-none rounded-lg border-transparent bg-fuchsia-950"
+        className="accent-green my-2 h-1.5 w-24 cursor-pointer"
         id="customRange"
         onChange={handleFontSizeChange}
         min="10"
         max="100"
         step="10"
       />
-      <label htmlFor="customRange" className="text-xs text-gray-500">
+      <label htmlFor="customRange" className="text-xs text-slate-600">
         Edit font size
       </label>
     </div>
