@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../../context";
 
-export const Range = () => {
+export const Range = ({ isOpen }) => {
   const { setFontSize } = useContext(Context);
 
   const sizeBreakpoints = [
@@ -19,19 +19,25 @@ export const Range = () => {
   };
 
   return (
-    <div className="bg-french-gray flex h-12 flex-col items-center rounded-bl-2xl bg-opacity-85 px-6 2xl:rounded-b-2xl">
-      <input
-        type="range"
-        className="accent-green my-2 h-1.5 w-24 cursor-pointer"
-        id="customRange"
-        onChange={handleFontSizeChange}
-        min="10"
-        max="100"
-        step="10"
-      />
-      <label htmlFor="customRange" className="text-xs text-slate-600">
-        Edit font size
-      </label>
-    </div>
+    <>
+      <div className="h-12">
+        {isOpen && (
+          <div className="flex flex-col items-center rounded-bl-2xl bg-french-gray bg-opacity-85 px-6 2xl:rounded-b-2xl">
+            <input
+              type="range"
+              className="my-2 h-1.5 w-24 cursor-pointer accent-green"
+              id="fontSizeRange"
+              onChange={handleFontSizeChange}
+              min="10"
+              max="100"
+              step="10"
+            />
+            <label htmlFor="fontSizeRange" className="text-xs text-slate-600">
+              Edit font size
+            </label>
+          </div>
+        )}
+      </div>
+    </>
   );
 };

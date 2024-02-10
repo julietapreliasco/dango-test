@@ -1,9 +1,9 @@
-export const Input = ({ handleEdit }) => {
+export const Input = ({ handleEdit, title }) => {
   return (
     <input
       type="text"
       className="text-base"
-      placeholder="Click to edit the title"
+      placeholder={title}
       onChange={handleEdit}
       maxLength={50}
     />

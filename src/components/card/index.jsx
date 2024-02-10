@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { Context } from "../../context";
+import { useContext } from "react";
 import { Button } from "../button";
 import { Input } from "../input";
 import { MdEdit } from "react-icons/md";
 import { FaCheck } from "react-icons/fa6";
-import { Context } from "../../context";
-import { useContext } from "react";
 
 export const Card = ({ name, price, description, image }) => {
   const [editMode, setEditMode] = useState(false);
@@ -28,13 +28,9 @@ export const Card = ({ name, price, description, image }) => {
   };
 
   return (
-    <article className="hover:border-ebony max-w-80 rounded-md border-2  border-gray-300 p-4 pt-6 ">
+    <article className="max-w-80 rounded-md border-2 border-gray-300  p-4 pt-6 hover:border-ebony">
       {image && (
-        <img
-          className="w-full object-cover opacity-85"
-          src={image}
-          alt={`Picture of ${name}`}
-        />
+        <img className="opacity-85" src={image} alt={`Picture of ${name}`} />
       )}
       <div className="pt-6">
         <div className="flex flex-col">
@@ -53,8 +49,8 @@ export const Card = ({ name, price, description, image }) => {
             </button>
           </div>
           {editMode && (
-            <div className="my-2 flex gap-3 py-1">
-              <Input handleEdit={handleEdit} />
+            <div className="my-2 flex py-1">
+              <Input handleEdit={handleEdit} title="Click to edit the title" />
             </div>
           )}
         </div>
@@ -67,9 +63,6 @@ export const Card = ({ name, price, description, image }) => {
             defaultValue="1"
             value={productAmount}
             onChange={handlePriceChange}
-            onKeyDown={(event) => {
-              event.preventDefault();
-            }}
             className="mx-2 w-10 border"
           />
         </div>
